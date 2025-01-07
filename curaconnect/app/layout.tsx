@@ -26,19 +26,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-      /*all over the page */
+        /*all over the page */
         className={cn(
           "min-h-screen bg-dark-300 font-sans antialiased",
           fontSans.variable
         )}
       >
-        {/*}
-      <ThemeProvider attribute="class" defaultTheme="dark">
-          {children}
-        </ThemeProvider>*/}
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true}>
+  {children}
+</ThemeProvider>
+
       </body>
     </html>
   );
