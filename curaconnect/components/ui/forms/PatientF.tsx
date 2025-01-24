@@ -19,7 +19,7 @@ import CustomFormField from "./CustomFormField";
 import Submitbuttom from "../Submitbuttom";
 import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
-
+import { createUser } from "@/lib/actions/patient.action";
 export enum FormFieldType {
   INPUT = "input",
   TEXTAREA = "textarea",
@@ -57,14 +57,17 @@ export function PatientF() {
         phone: values.phone,
       };
       const newUser = await createUser(user);
-      if (newUser) {
-        router.push('/patients/${newUser.$id}/register');
+
+      if (newUser?.$id) {
+        router.push(`/patients/${newUser.$id}/register`);
+      } else {
+        console.error("Failed to create or retrieve a user.");
       }
     } catch (error) {
-      console.log(error);
+      console.error("An error occurred during user creation:", error);
+    } finally {
+      setisLoading(false);
     }
-
-    setisLoading(false);
   };
       
 
@@ -89,7 +92,7 @@ export function PatientF() {
        control={form.control}
        name='name'
        label="Full name"
-       placeholder="wihansa"
+       placeholder="your name here"
        iconAlt="user"
       />
       <CustomFormField
@@ -120,7 +123,5 @@ export function PatientF() {
 }
 
 export default PatientF;
-function createUser(user: { name: string; email: string; phone: string; }) {
-  throw new Error("Function not implemented.");
-}
+
 

@@ -10,7 +10,7 @@ const client =new sdk.Client();
 
 
 client
- .setEndpoint(Endpoint!)
+ .setEndpoint('https://cloud.appwrite.io/v1')
  .setProject(Project_ID!)
  .setKey(API_KEY!)
 

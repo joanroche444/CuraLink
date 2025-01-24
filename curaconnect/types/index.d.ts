@@ -16,26 +16,26 @@ declare type SearchParamProps = {
   }
   
   declare interface RegisterUserParams extends CreateUserParams {
-    userId: string;
-    birthDate: Date;
+    userid: string;
+    birthDay: Date;
     gender: Gender;
     address: string;
-    occupation: string;
-    emergencyContactName: string;
-    emergencyContactNumber: string;
-    primaryPhysician: string;
+    
+    emergencyContact: string;
+    emergencyContactNum: string;
+    primaryPhy: string;
     insuranceProvider: string;
     allergies: string | undefined;
     currentMedication: string | undefined;
-    pastMedicalHistory: string | undefined;
+    medicalHistory: string | undefined;
     identificationType: string | undefined;
-    identificationNumber: string | undefined;
-    identificationDocument: FormData | undefined;
-    privacyConsent: boolean;
+    idDocid: string | undefined;
+    idDocUrl: FormData | undefined;
+    privacy: boolean;
   }
   
   declare type CreateAppointmentParams = {
-    userId: string;
+    userid: string;
     patient: string;
     primaryPhysician: string;
     reason: string;
