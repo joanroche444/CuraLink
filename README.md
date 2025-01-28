@@ -1,13 +1,6 @@
 # CuraConnect
-A Healthcare platform to help schedule appointments 
+A modern healthcare platform offering seamless appointment booking, secure health records management
 ## Features
 
-### 🌟 Key Features
-- **Effortless Registration**: Quick and easy sign-up for patients, healthcare providers, and administrators.
 
---react.js 
---next.js
---tailwind css
---shadowncn
---appwrite
---sentry
+
