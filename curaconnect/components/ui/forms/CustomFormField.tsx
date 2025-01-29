@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Control } from "react-hook-form";
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
-
+import ReactDatePicker from "react-datepicker";
 
 import Checkbox from "../checkbox";
 
@@ -18,6 +18,7 @@ import {
 import {Input} from "../input"
 import Select from "../select";
 import Textarea from "../Textarea";
+import { useRef } from "react";
 
 export enum FormFieldType {
   INPUT = "input",
@@ -107,6 +108,31 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
           </div>
         </FormControl>
       );
+      case FormFieldType.DATE_PICKER:
+        const datePickerRef = useRef<ReactDatePicker>(null);
+        return (
+          <div className="flex rounded-md border border-dark-500 bg-dark-400">
+            <Image
+              src="/assets/icons/calendar.svg"
+              height={24}
+              width={24}
+              alt="user"
+              className="ml-2"
+            />
+            <FormControl>
+              <ReactDatePicker
+                showTimeSelect={props.showTimeSelect ?? false}
+                selected={field.value}
+                onChange={(date: Date | null, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
+                  field.onChange(date);
+                }}
+                timeInputLabel="Time:"
+                dateFormat={props.dateFormat ?? "MM/dd/yyyy"}
+                wrapperClassName="date-picker"
+              />
+            </FormControl>
+          </div>
+        );
     
     
     case FormFieldType.SKELETON:
